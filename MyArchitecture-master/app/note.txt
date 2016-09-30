@@ -1,0 +1,29 @@
+1、架构采用mvp设计模式 Activity管理Fragmeng,Fragment呈现UI。p层同时持有modle层和view层的引用,同时view层也持
+有p层的引用,modle层和view层是分离的。项目的结构按模块划分,一个Activity就相当于是一个模块。
+
+2、Activity和Fragment都应该有一个基类,如BaseActivity和BaseFragment。
+
+3、网络请求框架 volley  okhttp  retrofit 每一个网络请求的框架都应该有取消请求的策略，每一个第三方框架都应该再封
+装一层。具体做法:自定义一个类继承框架自己的回调类
+
+4、用gson解析实体和json。 当服务器返回的字段和我们定义的实体字段不一样的时候可以用@SerializedName("")给这个字段
+重命名
+
+
+5、加载图片框架 glide
+
+6、没掌握的知识点: okhttp retrofit rxjava 代码混淆 多平台发布 material design SQLite
+
+7、常见的内存泄漏有:
+  (1)单例引起的内存泄漏,生命周期长得对象持有Activity的引用导致内存泄漏
+  (2)非静态内部类和匿名内部类引起内存泄漏,非静态内部类和匿名内部类都隐式的持有Activity的引用
+  (3)Handle引起的内存泄漏
+  (4)资源未关闭引起的内存泄漏如 BroadcastReceiver、File、游标cursor、Bitmap、Stream
+
+8、Android性能优化
+  (1)在Activity、Service、Application类中重写onTrimMemory方法,当界面不可见时释放一些资源例如图片的缓存
+  (2)用SparseArray<T>代替HashMap<Integer,T>
+  (3)枚举通常会比静态常量消耗2倍以上的内存，所以尽量不要使用枚举
+  (4)常量用static final来修饰
+  (5)使用增强型for循环,ArrayList不要用增强型for循环
+
