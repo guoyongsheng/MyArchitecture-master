@@ -76,5 +76,5 @@
   (6)@Singleton注解:可以标注构造方法和Provides标注的方法,用于实现全局单例
   (7)@Scope注解:可以标注构造方法和Provides标注的方法,用于实现局部单例,可以自定义注解
 
-14、目前android流行的一套架构: mvp + retrofit2 + rxjava + dagger2 + material design
+14、目前android流行的一套架构: mvp + retrofit2 + rxjava + dagger2 + material design + relam
 
