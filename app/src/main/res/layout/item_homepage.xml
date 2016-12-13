@@ -14,6 +14,6 @@
         android:paddingTop="@dimen/padding_bottom"
         android:gravity="center"
         android:background="@color/gray"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
+        android:layout_marginBottom="@dimen/margin_bottom" />
 
 </LinearLayout>

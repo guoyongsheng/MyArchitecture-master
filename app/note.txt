@@ -21,8 +21,8 @@
   (6)Dagger2
   (7)https
   (8)Stetho
-  (9)CricleImageView
-  (10)PhotoView
+  (9)Cr
+  (10)PhotoViewicleImageView
   (11)单元测试  junit mockito espresso dagger
   (12)svn的使用
 

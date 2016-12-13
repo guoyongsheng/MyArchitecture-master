@@ -18,46 +18,40 @@ import java.util.List;
 
 /**
  * Created by lenovo on 2016/8/19.
- *
+ * <p>
  * fragment呈现UI
  */
-public class HomePageFragment extends BaseFragment implements HomePageContract.View<HomePagePresenter>
-{
+public class HomePageFragment extends BaseFragment implements HomePageContract.View<HomePagePresenter> {
     private int page = 1; //当前页数
     private HomePagePresenter presenter;
     private RecyclerView recyclerView;
     private HomePageAdapter adapter;
     private List<ImageInfo> list = new ArrayList<>();
 
-    public static HomePageFragment newInstance()
-    {
+    public static HomePageFragment newInstance() {
         return new HomePageFragment();
     }
 
 
     @Override
-    public void setPresenter(HomePagePresenter presenter)
-    {
+    public void setPresenter(HomePagePresenter presenter) {
         this.presenter = presenter; //view层持有presenter层的引用
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState)
-    {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
-        if(inflater == null)
-        {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (inflater == null) {
             return null;
         }
 
-        View view = inflater.inflate(R.layout.fragment_homepage, container,false);
+        View view = inflater.inflate(R.layout.fragment_homepage, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -68,34 +62,29 @@ public class HomePageFragment extends BaseFragment implements HomePageContract.V
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
     }
 
     @Override
-    public void showHomePageData(List<ImageInfo> msg)
-    {
+    public void showHomePageData(List<ImageInfo> msg) {
         list.addAll(msg);
         adapter.notifyDataSetChanged();
 
     }
 
     @Override
-    public void showErrorMessage(String errorMsg)
-    {
+    public void showErrorMessage(String errorMsg) {
         Toast.makeText(getActivity(), errorMsg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void login(String name, String password)
-    {
+    public void login(String name, String password) {
         presenter.login(name, password);
     }
 
     //获取当前页数
-    public int getPage()
-    {
+    public int getPage() {
         return page;
     }
 }

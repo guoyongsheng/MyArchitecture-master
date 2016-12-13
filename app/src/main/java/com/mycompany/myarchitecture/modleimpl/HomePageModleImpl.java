@@ -29,13 +29,11 @@ import retrofit2.Call;
  * Created by lenovo on 2016/8/19.
  * 网络请求的实现
  */
-public class HomePageModleImpl extends BaseModle implements HomePageModle
-{
+public class HomePageModleImpl extends BaseModle implements HomePageModle {
 
     private HomePageModle.ILogin iLogin;
 
-    public HomePageModleImpl()
-    {
+    public HomePageModleImpl() {
         super();
         iLogin = retrofit.create(HomePageModle.ILogin.class);
     }
@@ -48,28 +46,22 @@ public class HomePageModleImpl extends BaseModle implements HomePageModle
      * @param size     每次获取的条数
      * @param listener
      */
-    public void getHomePageDataByVolley(Context context, int page, int size, CallBackListener<List<ImageInfo>> listener)
-    {
+    public void getHomePageDataByVolley(Context context, int page, int size, CallBackListener<List<ImageInfo>> listener) {
         String url = Config.BASE_URL;
         Map<String, String> map = new HashMap<>();
         map.put("page", String.valueOf(page));
         map.put("size", String.valueOf(size));
-        Type type = new TypeToken<ResponseInfo<ImageInfo>>()
-        {
+        Type type = new TypeToken<ResponseInfo<ImageInfo>>() {
         }.getType();
 
-        GsonRequest<ResponseInfo<ImageInfo>> gsonRequest = new GsonRequest<>(Request.Method.POST, url, type, new Response.Listener<ResponseInfo<ImageInfo>>()
-        {
+        GsonRequest<ResponseInfo<ImageInfo>> gsonRequest = new GsonRequest<>(Request.Method.POST, url, type, new Response.Listener<ResponseInfo<ImageInfo>>() {
             @Override
-            public void onResponse(ResponseInfo<ImageInfo> response)
-            {
+            public void onResponse(ResponseInfo<ImageInfo> response) {
 
             }
-        }, new Response.ErrorListener()
-        {
+        }, new Response.ErrorListener() {
             @Override
-            public void onErrorResponse(VolleyError error)
-            {
+            public void onErrorResponse(VolleyError error) {
 
             }
         });
@@ -78,8 +70,7 @@ public class HomePageModleImpl extends BaseModle implements HomePageModle
     }
 
     @Override
-    public void login(Map<String, String> map, CallBackListener<UserInfo> callBackListener)
-    {
+    public void login(Map<String, String> map, CallBackListener<UserInfo> callBackListener) {
         Call<UserEntity> call = iLogin.login(map);
         call.enqueue(new RetrofitCallBack<UserEntity>(callBackListener));
     }

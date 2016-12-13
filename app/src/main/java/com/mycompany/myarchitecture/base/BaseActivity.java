@@ -8,12 +8,10 @@ import android.support.v4.app.FragmentActivity;
  * <p/>
  * 基类的activity
  */
-public abstract class BaseActivity extends FragmentActivity
-{
+public abstract class BaseActivity extends FragmentActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initVariables();
         initView(savedInstanceState);
@@ -21,8 +19,7 @@ public abstract class BaseActivity extends FragmentActivity
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
     }
 
@@ -34,7 +31,6 @@ public abstract class BaseActivity extends FragmentActivity
 
 
     /**
-     *
      * @param savedInstanceState
      */
     public abstract void initView(Bundle savedInstanceState);

@@ -17,30 +17,27 @@ import retrofit2.http.POST;
 
 /**
  * Created by lenovo on 2016/8/19.
- *
+ * <p>
  * modle层 网络请求的接口
  */
-public interface HomePageModle
-{
+public interface HomePageModle {
     /**
      * 获取主页数据
-     * @param context 上下文对象
-     * @param page 当前页
-     * @param size 每次获取的条数
+     *
+     * @param context  上下文对象
+     * @param page     当前页
+     * @param size     每次获取的条数
      * @param listener dddd
      */
     void getHomePageDataByVolley(Context context, int page, int size, CallBackListener<List<ImageInfo>> listener);
 
 
-
-    void login(Map<String,String> map, CallBackListener<UserInfo> callBackListener);
-
+    void login(Map<String, String> map, CallBackListener<UserInfo> callBackListener);
 
 
-    interface ILogin
-    {
+    interface ILogin {
         @FormUrlEncoded
         @POST("account/loginInfo.json")
-        Call<UserEntity> login(@FieldMap Map<String,String> map);
+        Call<UserEntity> login(@FieldMap Map<String, String> map);
     }
 }

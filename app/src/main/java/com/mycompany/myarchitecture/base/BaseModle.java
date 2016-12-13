@@ -25,15 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by lenovo on 2016/8/21.
  */
-public class BaseModle
-{
+public class BaseModle {
     protected static Retrofit retrofit;
     protected IHttpService iHttpService;
 
-    public BaseModle()
-    {
-        if (retrofit == null)
-        {
+    public BaseModle() {
+        if (retrofit == null) {
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(Config.BASE_URL)
@@ -47,16 +44,15 @@ public class BaseModle
 
 
     //获取OkHttpClient的实例
-    private OkHttpClient getOkHttpClient()
-    {
+    private OkHttpClient getOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         //公共参数
         builder.addInterceptor(new QueryParamterIntercepter());
 
         //缓存
-       // File cacheFile = new File(BaseApplication.getIntance().getExternalCacheDir(), "cache_retrofit");
-      //  Cache cache = new Cache(cacheFile, 50 * 1024 * 1024);
-       // return builder.cache(cache).addInterceptor(new CacheInterceptor()).build();
+        // File cacheFile = new File(BaseApplication.getIntance().getExternalCacheDir(), "cache_retrofit");
+        //  Cache cache = new Cache(cacheFile, 50 * 1024 * 1024);
+        // return builder.cache(cache).addInterceptor(new CacheInterceptor()).build();
 
         //日志
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
@@ -74,11 +70,9 @@ public class BaseModle
 
 
     //公共参数
-    private static class QueryParamterIntercepter implements Interceptor
-    {
+    private static class QueryParamterIntercepter implements Interceptor {
         @Override
-        public Response intercept(Chain chain) throws IOException
-        {
+        public Response intercept(Chain chain) throws IOException {
             Request originalRequest = chain.request();
             Request request;
             HttpUrl httpUrl = originalRequest.url().newBuilder()
@@ -91,14 +85,11 @@ public class BaseModle
 
 
     //缓存
-    private static class CacheInterceptor implements Interceptor
-    {
+    private static class CacheInterceptor implements Interceptor {
         @Override
-        public Response intercept(Chain chain) throws IOException
-        {
+        public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if (!NetworkUtils.isAvailable(BaseApplication.getIntance()))
-            {
+            if (!NetworkUtils.isAvailable(BaseApplication.getIntance())) {
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)
                         .build();
@@ -114,12 +105,10 @@ public class BaseModle
 
 
     //日志
-    private static class LogInterceptor implements Interceptor
-    {
+    private static class LogInterceptor implements Interceptor {
 
         @Override
-        public Response intercept(Chain chain) throws IOException
-        {
+        public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             Log.i("BaseModle 参数", "request = " + request.toString());
             Response response = chain.proceed(request);

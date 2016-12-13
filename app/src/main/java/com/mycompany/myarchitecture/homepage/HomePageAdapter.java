@@ -17,29 +17,24 @@ import java.util.List;
  * Created by lenovo on 2016/8/19.
  * 适配器
  */
-public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHolder>
-{
+public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHolder> {
     private Context context; //上下文对象
     private List<ImageInfo> list; //数据集合
     private LayoutInflater inflater;
     private HomePagePresenter presenter;
 
-    public HomePageAdapter(Context context, List<ImageInfo> list, HomePagePresenter presenter)
-    {
+    public HomePageAdapter(Context context, List<ImageInfo> list, HomePagePresenter presenter) {
         this.presenter = presenter;
         this.context = context;
         this.list = list;
-        if(context != null)
-        {
+        if (context != null) {
             inflater = LayoutInflater.from(context);
         }
     }
 
     @Override
-    public HomePageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-    {
-        if(inflater  == null)
-        {
+    public HomePageAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (inflater == null) {
             return null;
         }
         View view = inflater.inflate(R.layout.item_homepage, parent, false);
@@ -47,10 +42,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(HomePageAdapter.ViewHolder viewHolder, int position)
-    {
-        if(viewHolder == null || list == null || list.size() <= position)
-        {
+    public void onBindViewHolder(HomePageAdapter.ViewHolder viewHolder, int position) {
+        if (viewHolder == null || list == null || list.size() <= position) {
             return;
         }
 
@@ -63,10 +56,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
     }
 
     @Override
-    public int getItemCount()
-    {
-        if(list != null)
-        {
+    public int getItemCount() {
+        if (list != null) {
             return list.size();
         }
         return 0;
@@ -74,19 +65,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
 
 
     //内部类---点击事件
-    private class OnClickView implements View.OnClickListener{
+    private class OnClickView implements View.OnClickListener {
 
         @Override
-        public void onClick(View view)
-        {
-            if(view == null)
-            {
+        public void onClick(View view) {
+            if (view == null) {
                 return;
             }
 
             int key = view.getId();
-            switch (key)
-            {
+            switch (key) {
             case R.id.tv_desc:
                 Intent intent = new Intent(context, HomePageActivity.class);
                 context.startActivity(intent);
@@ -101,10 +89,8 @@ public class HomePageAdapter extends RecyclerView.Adapter<HomePageAdapter.ViewHo
 
 
     //静态内部类
-    protected static final class ViewHolder extends RecyclerView.ViewHolder
-    {
-        public ViewHolder(View itemView)
-        {
+    protected static final class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(View itemView) {
             super(itemView);
             textDesc = (TextView) itemView.findViewById(R.id.tv_desc);
         }

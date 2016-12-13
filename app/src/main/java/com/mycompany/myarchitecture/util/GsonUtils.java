@@ -7,15 +7,13 @@ import java.lang.reflect.Type;
 /**
  * Created by lenovo on 2016/8/20.
  * gson的工具类 单例模式
- *
+ * <p>
  * 只有一个实例，私有的构造方法
  */
-public class GsonUtils
-{
+public class GsonUtils {
     private volatile static GsonUtils instance;
 
-    private GsonUtils()
-    {
+    private GsonUtils() {
 
     }
 
@@ -54,16 +52,11 @@ public class GsonUtils
 
     /**
      * 双重校验
-     *
      */
-    public static GsonUtils getInstance()
-    {
-        if(instance == null)
-        {
-            synchronized (GsonUtils.class)
-            {
-                if(instance == null)
-                {
+    public static GsonUtils getInstance() {
+        if (instance == null) {
+            synchronized (GsonUtils.class) {
+                if (instance == null) {
                     instance = new GsonUtils();
                 }
             }
@@ -73,22 +66,19 @@ public class GsonUtils
     }
 
     //对象转字符串
-    public String toJson(Object json)
-    {
+    public String toJson(Object json) {
         Gson gson = new Gson();
         return gson.toJson(json);
     }
 
     //json转JavaBean
-    public <T> T fromJson(String json, Class<T> t)
-    {
+    public <T> T fromJson(String json, Class<T> t) {
         Gson gson = new Gson();
         return gson.fromJson(json, t);
     }
 
     //json转list
-    public <T> T fromJson(String json, Type type)
-    {
+    public <T> T fromJson(String json, Type type) {
         Gson gson = new Gson();
         return gson.fromJson(json, type);
     }

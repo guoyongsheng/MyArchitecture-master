@@ -14,11 +14,9 @@ import android.telephony.TelephonyManager;
  *     desc  : 网络相关的工具类
  * </pre>
  */
-public class NetworkUtils
-{
+public class NetworkUtils {
 
-    private NetworkUtils()
-    {
+    private NetworkUtils() {
         throw new UnsupportedOperationException("u can't fuck me...");
     }
 
@@ -39,13 +37,10 @@ public class NetworkUtils
      *
      * @param context 上下文
      */
-    public static void openWirelessSettings(Context context)
-    {
-        if (android.os.Build.VERSION.SDK_INT > 10)
-        {
+    public static void openWirelessSettings(Context context) {
+        if (android.os.Build.VERSION.SDK_INT > 10) {
             context.startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
-        } else
-        {
+        } else {
             context.startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS));
         }
     }
@@ -56,8 +51,7 @@ public class NetworkUtils
      * @param context 上下文
      * @return NetworkInfo
      */
-    private static NetworkInfo getActiveNetworkInfo(Context context)
-    {
+    private static NetworkInfo getActiveNetworkInfo(Context context) {
         ConnectivityManager cm = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm.getActiveNetworkInfo();
